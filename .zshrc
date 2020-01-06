@@ -1,6 +1,14 @@
-export ZPLUG_HOME=/usr/local/opt/zplug
-source $ZPLUG_HOME/init.zsh
+# Install zplug if not already installed.
+if [[ ! -d ~/.zplug ]]; then
+    git clone https://github.com/zplug/zplug ~/.zplug && \
+        source ~/.zplug/init.zsh && \
+        zplug update
+else
+    source ~/.zplug/init.zsh
+fi
+
 unsetopt nomatch  
+
 # zplug Plugin Manager
 zplug "denysdovhan/spaceship-prompt", use:spaceship.zsh, from:github, as:theme
 
